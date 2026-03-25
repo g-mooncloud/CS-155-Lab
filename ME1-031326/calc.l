@@ -14,6 +14,7 @@
 "-"                 { return MINUS; }
 "*"                 { return TIMES; }
 "/"                 { return DIVIDE; }
+"^"                 { return EXPO; }                                /* Addition for Exponents*/
 "("                 { return LPAREN; }
 ")"                 { return RPAREN; }
 .                   { fprintf(stderr, "Unknown character: %s\n", yytext); }

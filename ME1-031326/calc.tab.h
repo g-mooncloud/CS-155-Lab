@@ -62,7 +62,8 @@ extern int yydebug;
     DIVIDE = 263,                  /* DIVIDE  */
     LPAREN = 264,                  /* LPAREN  */
     RPAREN = 265,                  /* RPAREN  */
-    UMINUS = 266                   /* UMINUS  */
+    EXPO = 266,                    /* EXPO  */
+    UMINUS = 267                   /* UMINUS  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -71,12 +72,12 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 11 "calc.y"
+#line 12 "calc.y"
 
     int ival;
     double fval;
 
-#line 80 "calc.tab.h"
+#line 81 "calc.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

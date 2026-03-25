@@ -3,6 +3,7 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>                                       /* Addition for Exponents */
 
 void yyerror(const char *msg);
 int yylex(void);
@@ -15,11 +16,12 @@ int yylex(void);
 
 %token <ival> NUM
 %token <fval> FNUM                                      /* Addition for Floating Numbers */
-%token PLUS MINUS TIMES DIVIDE LPAREN RPAREN
+%token PLUS MINUS TIMES DIVIDE LPAREN RPAREN EXPO       /* Addition for Exponents */
 
 %left PLUS MINUS
 %left TIMES DIVIDE
 %right UMINUS
+%right EXPO                                             /* Addition for Exponents */
 
 %type <ival> expr term factor
 
@@ -51,6 +53,7 @@ factor:
     NUM                                     { $$ = $1; }
     | LPAREN expr RPAREN                    { $$ = $2; }
     | MINUS factor %prec UMINUS             { $$ = -$2; }
+    | factor EXPO factor                    { $$ = (int)pow((double)$1, (double)$3); }     /* Additional Rule for Exponents */
     ;
 
 %%

@@ -14,6 +14,7 @@ int yylex(void);
 }
 
 %token <ival> NUM
+%token <fval> FNUM                                      /* Addition for Floating Numbers */
 %token PLUS MINUS TIMES DIVIDE LPAREN RPAREN
 
 %left PLUS MINUS

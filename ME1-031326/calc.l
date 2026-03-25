@@ -6,8 +6,10 @@
 
 %%
 
-[ \t\n]+            { /* skip whitespace */ }
+[ \t]+              { /* skip whitespace */ }
+\n                  { return '\n'; }                               /* Allows checking of multiple input lines*/
 [0-9]+              { yylval.ival = atoi(yytext); return NUM; }
+[0-9]+(\.)[0-9]+    { yylval.fval = atof(yytext); return FNUM; }   /* Allow Floating-Point Numbers */
 "+"                 { return PLUS; }
 "-"                 { return MINUS; }
 "*"                 { return TIMES; }
